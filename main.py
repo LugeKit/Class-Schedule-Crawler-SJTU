@@ -98,16 +98,6 @@ class Crawler:
         transcript_list = json.loads(res.text).get('items')
         self.outputTranscript(transcript_list)
 
-    # 默认
-    def getTranscript_default(self, res):
-        url = 'https://i.sjtu.edu.cn/cjcx/cjcx_cxXsKcList.html?gnmkdm=N305005&su=' + re.split('su=', res)[-1]
-        referer = 'https://i.sjtu.edu.cn/cjcx/cjcx_cxDgXsxmcj.html?gnmkdm=N305007&layout=default&su=' + re.split('su=', res)[-1]
-        self.Headers['Referer'] = referer
-        form = {'xnm': '3', 'xqm': '2019'}
-        res = self.session.post(url, data=form)
-        transcript_list = json.loads(res.text).get('items')
-        self.outputTranscript(transcript_list)
-
     # 输出成绩单
     def outputTranscript(self, L):
         tb = pt.PrettyTable()
